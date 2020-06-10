@@ -1,6 +1,6 @@
 # minidsp-setup
 
-Raspberry Pi General:
+## Raspberry Pi General:
 1. Add ssh and wpa_supplicant.conf to SD Card
 2. Change password
 3. Expose GPIO throughout network (raspi-config)
@@ -12,12 +12,12 @@ Raspberry Pi General:
 9. sudo apt-get install git
 
 
-Display:
+## Display:
 1. sudo pip3 install adafruit-circuitpython-ht16k33
 2. sudo apt-get install python3-pil
 
 
-IR Receiver:
+## IR Receiver:
 1. sudo apt-get install lirc
 2. sudo mv /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
 3. sudo apt-get install lirc
@@ -44,19 +44,20 @@ device = /dev/lirc0
 
 :
 
-# Uncomment this to enable the lirc-rpi module
+\# Uncomment this to enable the lirc-rpi module
 
-#dtoverlay=lirc-rpi
+\#dtoverlay=lirc-rpi
 
 dtoverlay=gpio-ir,gpio_pin=24
 
-#dtoverlay=gpio-ir-tx, gpio_pin=18
+\#dtoverlay=gpio-ir-tx, gpio_pin=18
 
 :
 
 :
 
 :
+
 7. sudo systemctl stop lircd.service
 8. sudo systemctl start lircd.service
 9. sudo systemctl status lircd.service
@@ -68,11 +69,11 @@ dtoverlay=gpio-ir,gpio_pin=24
 15. sudo reboot
 
 
-Relay:
+## Relay:
 1. sudo pip3 install RPi.GPIO
 
 
-MiniDSP Control:
+## MiniDSP Control:
 1. sudo apt-get install python3-dev libusb-1.0-0-dev libudev-dev
 2. sudo pip3 install --upgrade setuptools
 3. sudo pip3 install hidapi
