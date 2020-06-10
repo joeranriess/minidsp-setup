@@ -34,6 +34,7 @@ device = /dev/lirc0
 :
 
 :
+
 5. sudo mv /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf
 6. Edit /boot/config.txt by adding one line in the lirc-rpi module section as follows. This example assumes the RPi is 'listening' on BCM Pin 17 for the IR receiver but any RPi IO pin can be used. I have not tried it yet but if you want to send commands from the RPi then add and uncomment the 4th line shown below to send IR commands on BCM pin 18
 
