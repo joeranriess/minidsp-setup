@@ -63,7 +63,7 @@ sudo crontab -e
 ```
 Insert the following line after creating new cron file
 ```
-@reboot sh /home/pi/test/python3-minidsp/launcher.sh >/home/pi/logs/cronlog 2>&1
+@reboot sh /home/pi/minidsp-setup/minidsp/launcher.sh >/home/pi/logs/cronlog 2>&1
 ```
 Create logs folger
 ```
