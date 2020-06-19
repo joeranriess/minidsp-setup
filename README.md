@@ -5,8 +5,10 @@
 2. Change password
 3. Expose GPIO throughout network (raspi-config)
 4. Enable I2C (raspi-config)
+Update und upgrade Raspberry Pi OS
+
 `sudo apt-get update`
-6. sudo apt-get upgrade
+`sudo apt-get upgrade`
 
 ## MiniDSP Control:
 1. sudo apt-get install python3-pip
