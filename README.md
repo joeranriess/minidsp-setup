@@ -12,7 +12,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-## MiniDSP Control:
+## Install dependencies:
 Install PIP for Python3
 ```
 sudo apt-get install python3-pip
@@ -42,5 +42,39 @@ sudo pip3 install RPi.GPIO
 ```
 Install evdev library to read keyboard input in background
 ```
-10. sudo pip3 install evdev
+sudo pip3 install evdev
 ```
+## Get started
+Download the repository
+```
+git clone https://github.com/joeranriess/minidsp-setup.git
+```
+Switch to correct folder:
+```
+cd /minidsp-setup/minidsp
+```
+Make the launcher executable
+```
+sudo chmod +x launcher.sh
+```
+Create a cronjob
+```
+sudo crontab -e
+```
+Insert the following line after creating new cron file
+```
+@reboot sh /home/pi/test/python3-minidsp/launcher.sh >/home/pi/logs/cronlog 2>&1
+```
+Create logs folger
+```
+mkdir /home/pi/logs
+```
+Plug everything in, check GPIO pins with those in the code and other configs, then:
+```
+sudo reboot
+```
+If everything is setup properly you should see the volume on your display.
+
+
+Additional notes:
+- Flirc USB IR receiver must be configured to output the configured keys according to your ir remote keys.
