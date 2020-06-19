@@ -87,3 +87,4 @@ defaults.pcm.card 1
 
 Additional notes:
 - Flirc USB IR receiver must be configured to output the configured keys according to your ir remote keys.
+- I highly recommend using a Raspberry Pi 4 or 3, the performance is much better on these (tested bootup times between Raspberry Pi Zero W and Raspberry Pi 4: 41 Seconds vs. 14 Seconds until Volume is shown!
