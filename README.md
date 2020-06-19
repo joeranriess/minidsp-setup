@@ -76,5 +76,14 @@ sudo reboot
 If everything is setup properly you should see the volume on your display.
 
 
+Install Raspotify according to: https://github.com/dtcooper/raspotify
+Edit config file of Raspotify to your needs.
+Change ALSA config to use MiniDSP as default soundcard
+```
+sudo nano /usr/share/alsa/alsa.conf
+defaults.ctl.card 1
+defaults.pcm.card 1
+```
+
 Additional notes:
 - Flirc USB IR receiver must be configured to output the configured keys according to your ir remote keys.
