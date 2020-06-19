@@ -13,13 +13,34 @@ sudo apt-get upgrade
 ```
 
 ## MiniDSP Control:
-1. sudo apt-get install python3-pip
-2. sudo pip3 install Cython
-3. sudo apt-get install git
-4. sudo pip3 install adafruit-circuitpython-ht16k33
-5. sudo apt-get install python3-pil
-6. sudo pip3 install RPi.GPIO
-7. sudo apt-get install python3-dev libusb-1.0-0-dev libudev-dev
-8. sudo pip3 install --upgrade setuptools
-9. sudo pip3 install hidapi
+Install PIP for Python3
+```
+sudo apt-get install python3-pip
+```
+Cython is needed to use usb hid API
+```
+sudo pip3 install Cython
+```
+Install further libraries to support USB access
+```
+sudo apt-get install python3-dev libusb-1.0-0-dev libudev-dev
+sudo pip3 install --upgrade setuptools
+sudo pip3 install hidapi
+```
+Install git to clone the repository
+```
+sudo apt-get install git
+```
+Install Python library for display and image library
+```
+sudo pip3 install adafruit-circuitpython-ht16k33
+sudo apt-get install python3-pil
+```
+Install GPIO Python library
+```
+sudo pip3 install RPi.GPIO
+```
+Install evdev library to read keyboard input in background
+```
 10. sudo pip3 install evdev
+```
