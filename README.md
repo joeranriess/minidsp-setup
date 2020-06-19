@@ -5,8 +5,8 @@
 2. Change password
 3. Expose GPIO throughout network (raspi-config)
 4. Enable I2C (raspi-config)
-Update und upgrade Raspberry Pi OS
 
+Update und upgrade Raspberry Pi OS
 ```
 sudo apt-get update
 sudo apt-get upgrade
