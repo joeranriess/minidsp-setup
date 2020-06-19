@@ -6,7 +6,6 @@ import RPi.GPIO as GPIO
 import board
 import asyncio
 from adafruit_ht16k33.segments import Seg14x4
-from getkey import getkey, keys
 from evdev import InputDevice, categorize, ecodes
 
 
