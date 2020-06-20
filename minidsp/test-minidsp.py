@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+# That was my initial approach. You can use it for testing purposes.
+# Biggest issue I came across was the unability of reading keyboard
+# input while running in background. So I used a different approach
+# than getkey
+
 from minidsp.board_2x4hd import Board2x4HD
 import time
 import RPi.GPIO as GPIO
