@@ -1,3 +1,7 @@
+# This one is the CLI code written by mfeif.
+# I don' use it in my setup, but I wanted to keep it so
+#you can test initially on the commany line
+
 """command line access to the board"""
 
 import argparse
