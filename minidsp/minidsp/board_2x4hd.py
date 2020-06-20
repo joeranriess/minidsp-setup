@@ -227,3 +227,44 @@ class Board2x4HD:
         # set input gain for both input channels; use the _setInputGain to set individual ones
         self._set_input_gain(0, gain)
         self._set_input_gain(1, gain)
+
+"""Added Dirac Status getter and setter, haven't tested, that's why it is commented out
+    def _get_dirac(self):
+         # Send input source check command
+        COMMAND = [0x05, 0xff, 0xe0, 0x01]
+        with self._device as d:
+            tries = 1
+            d.write(COMMAND)
+            response = d.read()
+            tries = 1
+            while response[:3] != COMMAND[:3]:
+                if tries > 10:
+                    raise RuntimeError(
+                        "Tried >10 times to get a valid response to inputSource! Crashing!"
+                    )
+                # could log what we DO get back here, but don't have a place to do that right now...
+                # try again
+                d.write(COMMAND)
+                tries += 1
+                response = d.read()
+
+            # if we've made it here, some valid source information is likely...
+            # and resp starts with [0x05, 0xFF, 0xD9]
+            if response[3] not in [0x00, 0x01]:
+                raise RuntimeError(
+                    "Received unexpected response: bad source value {}".format(
+                        response[3]
+                    )
+                )
+        # Return as boolean, 0x01 for off 0x00 for on (bypass?)
+        return [response[3] == 0x00]
+
+    def _set_dirac(self, status)
+        # Send dirac command, 0x01 for off 0x00 for on (bypass?)
+        if status:
+            COMMAND = [0x3f, 0x00]
+        else:
+            COMMAND = [0x3f, 0x01]
+        with self._device as d:
+            d.write(COMMAND)
+"""
