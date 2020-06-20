@@ -14,6 +14,11 @@ from contextlib import AbstractContextManager
 
 import hid
 
+
+# for the future: If I wanted to use the DIRAC board I simply would need to
+# change the VID and PID here
+# VID = 0x2752
+# PID = 0x0044
 MINIDSP_2x4HD_VID = 0x2752
 MINIDSP_2x4HD_PID = 0x0011
 
