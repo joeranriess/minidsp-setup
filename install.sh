@@ -99,5 +99,8 @@ fi
 
 sudo systemctl restart raspotify
 
+echo "All good, cleaning up..."
+rm minidsp.service requirements.txt
+
 echo "Installation complete, rebooting."
 sudo reboot
