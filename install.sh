@@ -12,12 +12,12 @@ echo "Successfully downloaded requirements.txt"
 # Packages
 PACKAGES="python3-pip python3-dev libusb-1.0-0-dev libudev-dev git python3-pil"
 
-apt-get update
-apt-get upgrade -y
-apt-get install $PACKAGES -y
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install $PACKAGES -y
 echo "Successfully updated system and installed packages"
-pip3 install install --upgrade setuptools
-pip3 install -r requirements.txt
+sudo pip3 install install --upgrade setuptools
+sudo pip3 install -r requirements.txt
 echo "Successfully installed pip3 packages"
 
 # Get project files
@@ -43,7 +43,7 @@ echo "Done."
 #Move and create minidsp service
 echo "Creating minidsp service"
 wget https://joeranriess.github.io/minidsp-setup/minidsp.service
-cp minidsp-setup/minidsp.service /etc/systemd/system/
+sudo cp minidsp.service /etc/systemd/system/
 sudo systemctl start minidsp
 sudo systemctl enable minidsp
 echo "Done."
@@ -55,8 +55,6 @@ curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
 echo "Changing soundcard and raspotify configs"
 ALSA_CONFIG="/usr/share/alsa/alsa.conf"
 RASPOTIFY_CONFIG="/etc/default/raspotify"
-
-
 
 # Changing /usr/share/alsa/alsa.conf
 if grep -Fq "defaults.ctl.card" $ALSA_CONFIG
