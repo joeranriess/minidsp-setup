@@ -68,7 +68,7 @@ if grep -Fq "#DEVICE_NAME=" $RASPOTIFY_CONFIG
 then
 	# Replace the line
 	echo "Modifying raspotify"
-	sudo sed -i 's/#DEVICE_NAME='raspotify'/DEVICE_NAME='MiniDSP'/g' $RASPOTIFY_CONFIG
+	sudo sed -i 's/#DEVICE_NAME="raspotify"/DEVICE_NAME="MiniDSP"/g' $RASPOTIFY_CONFIG
 else
 	# Create the definition
 	echo "Adding to raspotify"
@@ -90,7 +90,7 @@ if grep -Fq "#CACHE_ARGS=" $RASPOTIFY_CONFIG
 then
 	# Replace the line
 	echo "Modifying raspotify"
-	sudo sed -i 's/#CACHE_ARGS="--cache /var/cache/raspotify"/CACHE_ARGS="--cache /var/cache/raspotify"' $RASPOTIFY_CONFIG
+	sudo sed -i 's/#CACHE_ARGS=/CACHE_ARGS=/g' $RASPOTIFY_CONFIG
 else
 	# Create the definition
 	echo "Adding to raspotify"
