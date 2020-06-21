@@ -7,7 +7,7 @@
 ## The easy way
 Simply copy this into the terminal and hit enter:
 ```
-curl -sL https://joeranriess.github.io/minidsp-setup/install.sh | sh
+sudo curl -sL https://joeranriess.github.io/minidsp-setup/install.sh | sh
 ```
 
 ## The hard way
