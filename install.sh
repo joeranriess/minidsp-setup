@@ -27,15 +27,26 @@ echo "Successfully downloaded project files"
 # Changing /boot/config.txt
 echo "Changing i2c settings"
 BOOT_CONFIG="/boot/config.txt"
+MOD_CONFIG="/etc/modules"
+
+if grep -Fq "i2c-dev" $MOD_CONFIG
+then
+	# Replace the line
+	echo "/etc/modules looks ok"
+else
+	# Create the definition
+	echo "Adding to /etc/modules"
+	sudo echo "i2c-dev" >> $MOD_CONFIG
+fi
 
 if grep -Fq "dtparam=i2c_arm" $BOOT_CONFIG
 then
 	# Replace the line
-	echo "Modifying boot/config.txt"
+	echo "Modifying /boot/config.txt"
 	sudo sed -i "/dtparam=i2c_arm/c\dtparam=i2c_arm=on" $BOOT_CONFIG
 else
 	# Create the definition
-	echo "Adding to boot/config.txt"
+	echo "Adding to /boot/config.txt"
 	sudo echo "dtparam=i2c_arm=on" >> $BOOT_CONFIG
 fi
 echo "Done."
