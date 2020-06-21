@@ -6,7 +6,7 @@ echo "Starting the Installation..."
 cd /home/pi
 
 # Download requirements.txt
-wget https://raw.githubusercontent.com/joeranriess/minidsp-setup/master/minidsp-setup/requirements.txt
+wget https://joeranriess.github.io/minidsp-setup/requirements.txt
 
 # Packages
 PACKAGES="python3-pip python3-dev libusb-1.0-0-dev libudev-dev git python3-pil"
@@ -16,6 +16,8 @@ apt-get upgrade -y
 apt-get install $PACKAGES -y
 pip3 install install --upgrade setuptools
 pip3 install -r requirements.txt
+
+rm requirements.txt
 
 # Get project files
 git clone https://github.com/joeranriess/minidsp-setup.git
@@ -110,3 +112,4 @@ else
 fi
 
 echo "Installation complete, rebooting."
+reboot
