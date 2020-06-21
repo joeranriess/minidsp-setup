@@ -1,5 +1,0 @@
-Cython
-hidapi
-adafruit-circuitpython-ht16k33
-RPi.GPIO
-evdev
