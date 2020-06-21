@@ -6,7 +6,7 @@ echo "Starting the Installation..."
 cd /home/pi
 
 # Download requirements.txt
-wget https://raw.githubusercontent.com/joeranriess/minidsp-setup/master/minidsp-setup/requirements.txt
+wget https://joeranriess.github.io/minidsp-setup/requirements.txt
 echo "Successfully downloaded requirements.txt"
 
 # Packages
