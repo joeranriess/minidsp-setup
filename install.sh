@@ -42,6 +42,7 @@ echo "Done."
 
 #Move and create minidsp service
 echo "Creating minidsp service"
+wget https://joeranriess.github.io/minidsp-setup/minidsp.service
 cp minidsp-setup/minidsp.service /etc/systemd/system/
 systemctl start minidsp
 systemctl enable minidsp
