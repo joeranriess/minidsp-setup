@@ -3,6 +3,7 @@
 ## Raspberry Pi General:
 1. Add ssh and wpa_supplicant.conf to SD Card
 2. Change password
+3. Enable I2C (raspi-config) <-- This is very important!
 
 ## The easy way
 Simply copy this into the terminal and hit enter:
@@ -11,8 +12,6 @@ sudo curl -sL https://joeranriess.github.io/minidsp-setup/install.sh | sh
 ```
 
 ## The hard way
-3. Enable I2C (raspi-config)
-
 Update und upgrade Raspberry Pi OS
 ```
 sudo apt-get update
