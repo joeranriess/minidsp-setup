@@ -6,7 +6,8 @@ echo "Starting the Installation..."
 cd /home/pi
 
 # Download requirements.txt
-wget https://joeranriess.github.io/minidsp-setup/requirements.txt
+wget https://raw.githubusercontent.com/joeranriess/minidsp-setup/master/minidsp-setup/requirements.txt
+echo "Successfully downloaded requirements.txt"
 
 # Packages
 PACKAGES="python3-pip python3-dev libusb-1.0-0-dev libudev-dev git python3-pil"
@@ -14,35 +15,19 @@ PACKAGES="python3-pip python3-dev libusb-1.0-0-dev libudev-dev git python3-pil"
 apt-get update
 apt-get upgrade -y
 apt-get install $PACKAGES -y
+echo "Successfully updated system and installed packages"
 pip3 install install --upgrade setuptools
 pip3 install -r requirements.txt
-
-rm requirements.txt
+echo "Successfully installed pip3 packages"
 
 # Get project files
 git clone https://github.com/joeranriess/minidsp-setup.git
+echo "Successfully downloaded project files"
 
-# Make start script executable and create cron job
-mkdir /home/pi/logs
-cd /minidsp-setup/minidsp
-chmod +x launcher.sh
-#write out current crontab
-crontab -l > tmpcron
-#echo new cron into cron file
-echo "@reboot sh /home/pi/minidsp-setup/minidsp/launcher.sh >/home/pi/logs/cronlog 2>&1" >> tmpcron
-#install new cron file
-crontab tmpcron
-rm tmpcron
+# Changing /boot/config.txt
+echo "Changing i2c settings"
+BOOT_CONFIG="/boot/config.txt"
 
-# Install Raspotify
-curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
-
-# Change some config file entries
-BOOT_CONFIG = "/boot/config.txt"
-ALSA_CONFIG = "/usr/share/alsa/alsa.conf"
-RASPOTIFY_CONFIG = "/etc/default/raspotify"
-
-# CHanging /boot/config.txt
 if grep -Fq "dtparam=i2c_arm" $BOOT_CONFIG
 then
 	# Replace the line
@@ -53,6 +38,24 @@ else
 	echo "Adding to boot/config.txt"
 	echo "dtparam=i2c_arm=on" >> $BOOT_CONFIG
 fi
+echo "Done."
+
+#Move and create minidsp service
+echo "Creating minidsp service"
+cp minidsp-setup/minidsp.service /etc/systemd/system/
+systemctl start minidsp
+systemctl enable minidsp
+echo "Done."
+
+# Install Raspotify
+curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
+
+# Change some config file entries
+echo "Changing soundcard and raspotify configs"
+ALSA_CONFIG="/usr/share/alsa/alsa.conf"
+RASPOTIFY_CONFIG="/etc/default/raspotify"
+
+
 
 # Changing /usr/share/alsa/alsa.conf
 if grep -Fq "defaults.ctl.card" $ALSA_CONFIG
@@ -110,6 +113,8 @@ else
 	echo "Adding to raspotify"
 	echo 'CACHE_ARGS="--cache /var/cache/raspotify"' >> $RASPOTIFY_CONFIG
 fi
+
+systemctl restart raspotify
 
 echo "Installation complete, rebooting."
 reboot
